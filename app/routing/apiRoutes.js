@@ -12,8 +12,33 @@ module.exports = function(app) {
 
         //Capture user input
         var userInput = req.body;
-        var userScores = userInput.scores;
+        var userAnswers = userInput.scores;
 
+        ///Find a match
+        var matchingName = "";
+        var matchingPhoto = "";
+        var totalDifference = 1000;
 
-    })
-}
+        //Loop through friends
+        for (var i = 0; i < friends.length; i++) {
+
+            var differentScores = 0;
+
+            //Loop through user answers
+            for (var j = 0; j < userAnswers.length; j++) {
+                differentScores += Math.abs(friends[i].scores[j] - userAnswers[j]); 
+            }
+
+            if (differentScores < totalDifference) {
+
+                totalDifference = differentScores;
+                matchingName = friends[i].name;
+                matchingPhoto = frinds[i].photo;
+            }
+        }
+
+        friends.push(userInput);
+
+        res.json({status: "OK", matchName: matchName, matchImage: matchImage});
+    });
+};
