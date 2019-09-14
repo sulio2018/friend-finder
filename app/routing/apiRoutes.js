@@ -35,7 +35,7 @@ module.exports = function(app) {
 
                 totalDifference = differentScores;
                 matchingName = friends[i].name;
-                matchingPhoto = frinds[i].photo;
+                matchingPhoto = friends[i].photo;
             }
         }
 
