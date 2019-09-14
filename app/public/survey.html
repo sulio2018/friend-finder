@@ -181,67 +181,66 @@
 
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div id="results-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Your Friend Match:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Best Match</strong></h2>
                 </div>
                 <div class="modal-body">
                     <h2 id="userMatchName"></h2>
-                    <img id="userMatchPhoto" src="" alt="">
+                    <img id="userMatchPhoto"
+                        src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
-    </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-        $(document).ready(function () {
+            $(document).ready(function () {
 
-            $("#submit1").on("click", function (event) {
+                $("#submit1").on("click", function (event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                var userInput = {
-                    name: $("#name").val().trim(),
-                    photo: $("#photo").val().trim(),
-                    scores: [
-                        $("#question1").val().trim(),
-                        $("#question2").val().trim(),
-                        $("#question3").val().trim(),
-                        $("#question4").val().trim(),
-                        $("#question5").val().trim(),
-                        $("#question6").val().trim(),
-                        $("#question7").val().trim(),
-                        $("#question8").val().trim(),
-                        $("#question9").val().trim(),
-                        $("#question10").val().trim(),
-                    ]
-                };
+                    var userInput = {
+                        name: $("#name").val().trim(),
+                        photo: $("#photo").val().trim(),
+                        scores: [
+                            $("#question1").val().trim(),
+                            $("#question2").val().trim(),
+                            $("#question3").val().trim(),
+                            $("#question4").val().trim(),
+                            $("#question5").val().trim(),
+                            $("#question6").val().trim(),
+                            $("#question7").val().trim(),
+                            $("#question8").val().trim(),
+                            $("#question9").val().trim(),
+                            $("#question10").val().trim(),
+                        ]
+                    };
 
-                $.post("/api/friends", userInput)
+                    $.post("/api/friends", userInput)
 
-                    .done(function (data) {
+                        .done(function (data) {
 
-                        $("#userMatchName").html(data.matchingName);
-                        $("#userMatchPhoto").attr("src", data.matchingPhoto);
+                            $("#userMatchName").html(data.matchingName);
+                            $("#userMatchPhoto").attr("src", data.matchingPhoto);
 
-                        $("#modal").modal("toggle");
-                    });
-            });
+                            $("#results-modal").modal("toggle");
+                        });
+                });
 
 
-        })
+            })
 
-    </script>
+        </script>
 
 
 </body>
