@@ -39,6 +39,6 @@ module.exports = function(app) {
 
         friends.push(userInput);
 
-        res.json({status: "OK", matchName: matchName, matchImage: matchImage});
+        res.json({status: "OK", matchingName: matchingName, matchingPhoto: matchingPhoto});
     });
 };
