@@ -19,3 +19,8 @@ body {
 h4 {
     font-weight: bold;
 }
+
+footer {
+    margin-left: -10px;
+    padding-bottom: 20px;
+}
